@@ -8,7 +8,7 @@ var ranNum = function (max) {
 
 // Request password length
 var passwordLength = function () {
-  var length = window.prompt("Choose a password Length: 8 - 128.");
+  var length = window.prompt("Choose password Length: 8 - 128.");
   while (length < 8 || length > 128) {
     length = window.prompt("Please choose a number between 8 and 128.");
   };
