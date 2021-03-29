@@ -74,27 +74,53 @@ var character = function (num, special, lower, upper) {
 // Generates password
 var generatePassword = function () {
 
-  // Get password length
-  var length = passwordLength();
-  var password = "";
-  var typeChoosen = true;
+  // Loop so user can donfirm choices
+  do {
+    // Get password length
+    var length = passwordLength();
+    var password = "";
+    var typeChoosen = true;
 
-  // Get Charater Types
-  while (typeChoosen) {
-    var lowercaseConfirm = window.confirm("Would you like to have Lowercase Letters?");
+    // Get Charater Types
+    while (typeChoosen) {
+      var lowercaseConfirm = window.confirm("Would you like to have Lowercase Letters?");
 
-    var uppercaseConfirm = window.confirm("Would you like to have Uppercase Letters?");
+      var uppercaseConfirm = window.confirm("Would you like to have Uppercase Letters?");
 
-    var specialCharacterConfirm = window.confirm("Would you like to have Special Characters?");
+      var specialCharacterConfirm = window.confirm("Would you like to have Special Characters?");
 
-    var numericConfirm = window.confirm("Would you like to have Numbers?");
-    if (lowercaseConfirm || uppercaseConfirm || specialCharacterConfirm || numericConfirm) {
-      typeChoosen = false;
+      var numericConfirm = window.confirm("Would you like to have Numbers?");
+
+      if (lowercaseConfirm || uppercaseConfirm || specialCharacterConfirm || numericConfirm) {
+        typeChoosen = false;
+      }
+
+      else {
+        window.alert("Please choose at least one character type.")
+      }
     }
-    else {
-      window.alert("Please choose at least one character type.")
+
+    var typeConfirm = "";
+
+    // verify users choices
+    if (lowercaseConfirm) {
+      typeConfirm += ", Lowercase letters";
     }
-  }
+
+    if (uppercaseConfirm) {
+      typeConfirm += ", Uppercase letters";
+    }
+
+    if (specialCharacterConfirm) {
+      typeConfirm += ", Special Characters";
+    }
+
+    if (numericConfirm) {
+      typeConfirm += ", Numbers";
+    }
+
+    var correctChoice = window.confirm("You would like you password to be " + length + " characters. \nThe character types you have choosen are" + typeConfirm + ".")
+  } while (!correctChoice)
 
   // Add charaters until password length
   while (password.length < length) {
